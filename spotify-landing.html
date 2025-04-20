@@ -230,7 +230,6 @@
       /* Main content */
       .main-content {
         flex: 1;
-        overflow-y: auto;
         padding: 16px 32px 100px;
         background-color: #121212;
         position: fixed;
@@ -238,10 +237,10 @@
         margin-left: 21vw;
         border-radius: 5px;
         height: calc(100vh - 20px);
-
-        /* Custom scrollbar */
+        overflow-y: auto;
+        overflow-x: hidden;
         scrollbar-width: thin;
-        scrollbar-color: #535353 transparent;
+        scrollbar-color: gray;
       }
 
       /* Custom scrollbar for webkit browsers */
@@ -358,12 +357,25 @@
 
       /* Card grid */
       .card-grid {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
+        display: flex;
+        flex-wrap: nowrap;
         gap: 24px;
+        overflow-x: auto;
+        padding-bottom: 16px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        width: 100%;
+        min-width: 0;
+        -webkit-overflow-scrolling: touch;
+      }
+      .card-grid::-webkit-scrollbar {
+        display: none;
       }
 
       .card {
+        flex: 0 0 auto;
+        width: 200px;
+        min-width: 200px;
         background-color: #181818;
         border-radius: 8px;
         padding: 16px;
@@ -402,12 +414,23 @@
 
       /* Charts grid */
       .charts-grid {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        display: flex;
+        flex-wrap: nowrap;
         gap: 24px;
+        overflow-x: auto;
+        padding-bottom: 16px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .charts-grid::-webkit-scrollbar {
+        display: none;
       }
 
       .chart-card {
+        flex: 0 0 auto;
+        min-width: 200px;
+        width: 200px;
         background: linear-gradient(149deg, #450af5, #c4efd9);
         border-radius: 8px;
         padding: 16px;
@@ -726,6 +749,250 @@
 
         <!-- Main content -->
         <div class="main-content">
+          <section class="content-section">
+            <div class="section-header">
+              <h2 class="section-title">Trending songs</h2>
+              <a href="#" class="see-all">Show all</a>
+            </div>
+            <div class="card-grid">
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="Bangalore Bangers"
+                />
+                <h3 class="card-title">Bangalore Bangers</h3>
+                <p class="card-subtitle">
+                  Check out the songs Bangalore is vibing to
+                </p>
+              </div>
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="Chak De Punjab"
+                />
+                <h3 class="card-title">Chak De Punjab</h3>
+                <p class="card-subtitle">
+                  Check out the songs Punjab is vibing to
+                </p>
+              </div>
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="Jhalakee"
+                />
+                <h3 class="card-title">Jhalakee</h3>
+                <p class="card-subtitle">
+                  Check out the songs Mumbai is vibing to
+                </p>
+              </div>
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="Cheer for Chennai"
+                />
+                <h3 class="card-title">Cheer for Chennai</h3>
+                <p class="card-subtitle">
+                  Check out the songs Chennai is vibing to
+                </p>
+              </div>
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="Hottest Tracks"
+                />
+                <h3 class="card-title">Hottest Tracks</h3>
+                <p class="card-subtitle">
+                  Hottest tracks from your favourite Punjabi artists
+                </p>
+              </div>
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="Bollywood Central"
+                />
+                <h3 class="card-title">Bollywood Central</h3>
+                <p class="card-subtitle">Jab baje toh seed mood banaye</p>
+              </div>
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="India's Rap Scene"
+                />
+                <h3 class="card-title">India's Rap Scene</h3>
+                <p class="card-subtitle">Cover - YUNG DSA</p>
+              </div>
+            </div>
+          </section>
+                    <!-- Top Artists Section -->
+                    <section class="content-section">
+                      <div class="section-header">
+                        <h2 class="section-title">Popular Artists</h2>
+                        <a href="#" class="see-all">Show all</a>
+                      </div>
+                      <div class="card-grid">
+                        <div class="card">
+                          <img
+                            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                            class="card-img"
+                            alt="Artist 1"
+                          />
+                          <h3 class="card-title">Artist 1</h3>
+                          <p class="card-subtitle">Genre 1</p>
+                        </div>
+                        <div class="card">
+                          <img
+                            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                            class="card-img"
+                            alt="Artist 2"
+                          />
+                          <h3 class="card-title">Artist 2</h3>
+                          <p class="card-subtitle">Genre 2</p>
+                        </div>
+                        <div class="card">
+                          <img
+                            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                            class="card-img"
+                            alt="Artist 3"
+                          />
+                          <h3 class="card-title">Artist 3</h3>
+                          <p class="card-subtitle">Genre 3</p>
+                        </div>
+                        <div class="card">
+                          <img
+                            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                            class="card-img"
+                            alt="Artist 4"
+                          />
+                          <h3 class="card-title">Artist 4</h3>
+                          <p class="card-subtitle">Genre 4</p>
+                        </div>
+                        <div class="card">
+                          <img
+                            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                            class="card-img"
+                            alt="Artist 5"
+                          />
+                          <h3 class="card-title">Artist 5</h3>
+                          <p class="card-subtitle">Genre 5</p>
+                        </div>
+                      </div>
+                    </section>
+                    <!-- Popular Albums Section -->
+                    <section class="content-section">
+                      <div class="section-header">
+                        <h2 class="section-title">Popular Albums</h2>
+                        <a href="#" class="see-all">Show all</a>
+                      </div>
+                      <div class="card-grid">
+                        <div class="card">
+                          <img
+                            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                            class="card-img"
+                            alt="Album 1"
+                          />
+                          <h3 class="card-title">Album 1</h3>
+                          <p class="card-subtitle">Artist 1</p>
+                        </div>
+                        <div class="card">
+                          <img
+                            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                            class="card-img"
+                            alt="Album 2"
+                          />
+                          <h3 class="card-title">Album 2</h3>
+                          <p class="card-subtitle">Artist 2</p>
+                        </div>
+                        <div class="card">
+                          <img
+                            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                            class="card-img"
+                            alt="Album 3"
+                          />
+                          <h3 class="card-title">Album 3</h3>
+                          <p class="card-subtitle">Artist 3</p>
+                        </div>
+                        <div class="card">
+                          <img
+                            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                            class="card-img"
+                            alt="Album 4"
+                          />
+                          <h3 class="card-title">Album 4</h3>
+                          <p class="card-subtitle">Artist 4</p>
+                        </div>
+                        <div class="card">
+                          <img
+                            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                            class="card-img"
+                            alt="Album 5"
+                          />
+                          <h3 class="card-title">Album 5</h3>
+                          <p class="card-subtitle">Artist 5</p>
+                        </div>
+                      </div>
+                    </section>
+
+                              <!-- Popular Albums Section -->
+          <section class="content-section">
+            <div class="section-header">
+              <h2 class="section-title">Popular Radio</h2>
+              <a href="#" class="see-all">Show all</a>
+            </div>
+            <div class="card-grid">
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="Album 1"
+                />
+                <h3 class="card-title">Album 1</h3>
+                <p class="card-subtitle">Artist 1</p>
+              </div>
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="Album 2"
+                />
+                <h3 class="card-title">Album 2</h3>
+                <p class="card-subtitle">Artist 2</p>
+              </div>
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="Album 3"
+                />
+                <h3 class="card-title">Album 3</h3>
+                <p class="card-subtitle">Artist 3</p>
+              </div>
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="Album 4"
+                />
+                <h3 class="card-title">Album 4</h3>
+                <p class="card-subtitle">Artist 4</p>
+              </div>
+              <div class="card">
+                <img
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
+                  class="card-img"
+                  alt="Album 5"
+                />
+                <h3 class="card-title">Album 5</h3>
+                <p class="card-subtitle">Artist 5</p>
+              </div>
+            </div>
+          </section>
           <!-- Featured Charts Section -->
           <section class="content-section">
             <div class="section-header">
@@ -797,7 +1064,7 @@
             <div class="card-grid">
               <div class="card">
                 <img
-                  src="https://via.placeholder.com/180x180/FF3333/FFFFFF?text=Bangalore"
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
                   class="card-img"
                   alt="Bangalore Bangers"
                 />
@@ -808,7 +1075,7 @@
               </div>
               <div class="card">
                 <img
-                  src="https://via.placeholder.com/180x180/E50914/FFFFFF?text=Punjab"
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
                   class="card-img"
                   alt="Chak De Punjab"
                 />
@@ -819,7 +1086,7 @@
               </div>
               <div class="card">
                 <img
-                  src="https://via.placeholder.com/180x180/3333FF/FFFFFF?text=Mumbai"
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
                   class="card-img"
                   alt="Jhalakee"
                 />
@@ -830,7 +1097,7 @@
               </div>
               <div class="card">
                 <img
-                  src="https://via.placeholder.com/180x180/FFCC00/FFFFFF?text=Chennai"
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
                   class="card-img"
                   alt="Cheer for Chennai"
                 />
@@ -841,7 +1108,7 @@
               </div>
               <div class="card">
                 <img
-                  src="https://via.placeholder.com/180x180/333333/FFFFFF?text=Hottest"
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
                   class="card-img"
                   alt="Hottest Tracks"
                 />
@@ -852,7 +1119,7 @@
               </div>
               <div class="card">
                 <img
-                  src="https://via.placeholder.com/180x180/FF3333/FFFFFF?text=Bollywood"
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
                   class="card-img"
                   alt="Bollywood Central"
                 />
@@ -861,7 +1128,7 @@
               </div>
               <div class="card">
                 <img
-                  src="https://via.placeholder.com/180x180/333333/FFFFFF?text=Rap"
+                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/85/76/36/caption.jpg?w=300&h=300&s=1"
                   class="card-img"
                   alt="India's Rap Scene"
                 />
@@ -870,173 +1137,15 @@
               </div>
             </div>
           </section>
-
-          <!-- Popular Albums Section -->
-          <section class="content-section">
-            <div class="section-header">
-              <h2 class="section-title">Popular Albums</h2>
-              <a href="#" class="see-all">Show all</a>
-            </div>
-            <div class="card-grid">
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/FF3333/FFFFFF?text=Album1"
-                  class="card-img"
-                  alt="Album 1"
-                />
-                <h3 class="card-title">Album 1</h3>
-                <p class="card-subtitle">Artist 1</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/E50914/FFFFFF?text=Album2"
-                  class="card-img"
-                  alt="Album 2"
-                />
-                <h3 class="card-title">Album 2</h3>
-                <p class="card-subtitle">Artist 2</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/3333FF/FFFFFF?text=Album3"
-                  class="card-img"
-                  alt="Album 3"
-                />
-                <h3 class="card-title">Album 3</h3>
-                <p class="card-subtitle">Artist 3</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/FFCC00/FFFFFF?text=Album4"
-                  class="card-img"
-                  alt="Album 4"
-                />
-                <h3 class="card-title">Album 4</h3>
-                <p class="card-subtitle">Artist 4</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/333333/FFFFFF?text=Album5"
-                  class="card-img"
-                  alt="Album 5"
-                />
-                <h3 class="card-title">Album 5</h3>
-                <p class="card-subtitle">Artist 5</p>
-              </div>
-            </div>
-          </section>
-
-          <!-- New Releases Section -->
-          <section class="content-section">
-            <div class="section-header">
-              <h2 class="section-title">New Releases</h2>
-              <a href="#" class="see-all">Show all</a>
-            </div>
-            <div class="card-grid">
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/FF3333/FFFFFF?text=Release1"
-                  class="card-img"
-                  alt="Release 1"
-                />
-                <h3 class="card-title">Release 1</h3>
-                <p class="card-subtitle">Artist 1</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/E50914/FFFFFF?text=Release2"
-                  class="card-img"
-                  alt="Release 2"
-                />
-                <h3 class="card-title">Release 2</h3>
-                <p class="card-subtitle">Artist 2</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/3333FF/FFFFFF?text=Release3"
-                  class="card-img"
-                  alt="Release 3"
-                />
-                <h3 class="card-title">Release 3</h3>
-                <p class="card-subtitle">Artist 3</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/FFCC00/FFFFFF?text=Release4"
-                  class="card-img"
-                  alt="Release 4"
-                />
-                <h3 class="card-title">Release 4</h3>
-                <p class="card-subtitle">Artist 4</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/333333/FFFFFF?text=Release5"
-                  class="card-img"
-                  alt="Release 5"
-                />
-                <h3 class="card-title">Release 5</h3>
-                <p class="card-subtitle">Artist 5</p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Top Artists Section -->
-          <section class="content-section">
-            <div class="section-header">
-              <h2 class="section-title">Top Artists</h2>
-              <a href="#" class="see-all">Show all</a>
-            </div>
-            <div class="card-grid">
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/FF3333/FFFFFF?text=Artist1"
-                  class="card-img"
-                  alt="Artist 1"
-                />
-                <h3 class="card-title">Artist 1</h3>
-                <p class="card-subtitle">Genre 1</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/E50914/FFFFFF?text=Artist2"
-                  class="card-img"
-                  alt="Artist 2"
-                />
-                <h3 class="card-title">Artist 2</h3>
-                <p class="card-subtitle">Genre 2</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/3333FF/FFFFFF?text=Artist3"
-                  class="card-img"
-                  alt="Artist 3"
-                />
-                <h3 class="card-title">Artist 3</h3>
-                <p class="card-subtitle">Genre 3</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/FFCC00/FFFFFF?text=Artist4"
-                  class="card-img"
-                  alt="Artist 4"
-                />
-                <h3 class="card-title">Artist 4</h3>
-                <p class="card-subtitle">Genre 4</p>
-              </div>
-              <div class="card">
-                <img
-                  src="https://via.placeholder.com/180x180/333333/FFFFFF?text=Artist5"
-                  class="card-img"
-                  alt="Artist 5"
-                />
-                <h3 class="card-title">Artist 5</h3>
-                <p class="card-subtitle">Genre 5</p>
-              </div>
-            </div>
-          </section>
         </div>
       </div>
     </div>
   </body>
 </html>
+
+
+
+
+
+
+
