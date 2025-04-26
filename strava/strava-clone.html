@@ -107,9 +107,9 @@
       }
 
       .hero-center p {
-        font-size: 16px;
+        font-size: 0.875rem;
         margin-bottom: 20px;
-        color: #666;
+        color: #43423f;
       }
 
       .member-text {
@@ -347,6 +347,125 @@
 
       .login-btn-wrapper:hover {
         background-color: #e6e6e6;
+      }
+
+      /* AI Chat Bot Styles */
+      .ai-bot-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #fc5200;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 1000;
+        border: none;
+      }
+
+      .ai-bot-button svg {
+        width: 30px;
+        height: 30px;
+        fill: white;
+      }
+
+      .chat-modal {
+        display: none;
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 350px;
+        height: 450px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        overflow: hidden;
+        flex-direction: column;
+      }
+
+      .chat-header {
+        background-color: #fc5200;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .chat-header h3 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .close-chat {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .chat-messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .message {
+        max-width: 80%;
+        padding: 10px 15px;
+        border-radius: 18px;
+        margin-bottom: 5px;
+        word-wrap: break-word;
+      }
+
+      .bot-message {
+        background-color: #f1f1f1;
+        align-self: flex-start;
+        border-bottom-left-radius: 5px;
+      }
+
+      .user-message {
+        background-color: #fc5200;
+        color: white;
+        align-self: flex-end;
+        border-bottom-right-radius: 5px;
+      }
+
+      .chat-input-container {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid #e0e0de;
+      }
+
+      .chat-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #e0e0de;
+        border-radius: 20px;
+        outline: none;
+      }
+
+      .send-button {
+        background-color: #fc5200;
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-left: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     </style>
   </head>
@@ -711,5 +830,125 @@
         </div>
       </div>
     </footer>
+
+    <!-- AI Bot Button -->
+    <button class="ai-bot-button" id="ai-bot-button">
+      <img
+        src="https://cdn3.iconfinder.com/data/icons/chat-bot-emoji-blue-filled-color/300/14134081Untitled-3-512.png"
+        alt="Strava Bot"
+        height="40"
+        width="40"
+      />
+    </button>
+
+    <!-- Chat Modal -->
+    <div class="chat-modal" id="chat-modal">
+      <div class="chat-header">
+        <h3>Strava Assistant</h3>
+        <button class="close-chat" id="close-chat">&times;</button>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="message bot-message">
+          Hi there! I'm your Strava assistant. How can I help you today?
+        </div>
+      </div>
+      <div class="chat-input-container">
+        <input
+          type="text"
+          class="chat-input"
+          id="chat-input"
+          placeholder="Type your message..."
+        />
+        <button class="send-button" id="send-button">
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
   </body>
 </html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // AI Chat functionality
+    const aiButton = document.getElementById("ai-bot-button");
+    const chatModal = document.getElementById("chat-modal");
+    const closeChat = document.getElementById("close-chat");
+    const chatInput = document.getElementById("chat-input");
+    const sendButton = document.getElementById("send-button");
+    const chatMessages = document.getElementById("chat-messages");
+
+    // Open chat modal
+    aiButton.addEventListener("click", function () {
+      chatModal.style.display = "flex";
+    });
+
+    // Close chat modal
+    closeChat.addEventListener("click", function () {
+      chatModal.style.display = "none";
+    });
+
+    // Close modal when clicking outside
+    document.addEventListener("click", function (event) {
+      // Check if the click is outside the chat modal and the AI button
+      if (
+        !chatModal.contains(event.target) &&
+        event.target !== aiButton &&
+        !aiButton.contains(event.target)
+      ) {
+        chatModal.style.display = "none";
+      }
+    });
+
+    // Prevent clicks inside the modal from closing it
+    chatModal.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+
+    // Send message function
+    function sendMessage() {
+      const message = chatInput.value.trim();
+      if (message !== "") {
+        // Add user message
+        const userMessageElement = document.createElement("div");
+        userMessageElement.classList.add("message", "user-message");
+        userMessageElement.textContent = message;
+        chatMessages.appendChild(userMessageElement);
+
+        // Clear input
+        chatInput.value = "";
+
+        // Auto scroll to bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Simulate bot response (in a real app, this would call an API)
+        setTimeout(() => {
+          const botMessageElement = document.createElement("div");
+          botMessageElement.classList.add("message", "bot-message");
+          botMessageElement.textContent =
+            "I'm a demo assistant. In a real implementation, I would provide helpful information about Strava features!";
+          chatMessages.appendChild(botMessageElement);
+
+          // Auto scroll to bottom again
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1000);
+      }
+    }
+
+    // Send message on button click
+    sendButton.addEventListener("click", sendMessage);
+
+    // Send message on Enter key
+    chatInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+  });
+</script>
