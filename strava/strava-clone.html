@@ -30,6 +30,7 @@
 
       .startNav {
         display: flex;
+        align-items: center;
       }
 
       .logo {
@@ -40,6 +41,7 @@
       }
 
       nav ul {
+        align-items: center;
         display: flex;
         list-style: none;
       }
@@ -242,6 +244,107 @@
         width: 300px;
         transform: translateY(50%);
       }
+
+      /* Add these styles for the dropdown functionality */
+      .nav-dropdown {
+        position: relative;
+        display: inline-block;
+        padding-top: 18px;
+        height: 60px;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 600px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        border-radius: 8px;
+        padding: 20px;
+        left: 0px;
+        top: 40px;
+      }
+
+      .nav-dropdown:hover .dropdown-content,
+      .dropdown-content:hover {
+        display: flex;
+      }
+
+      .dropdown-arrow {
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+
+      .nav-dropdown:hover .dropdown-arrow {
+        transform: rotate(180deg);
+      }
+
+      .top-sports {
+        width: 30%;
+        padding-right: 20px;
+      }
+
+      .top-sports h3 {
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      .sport-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        text-decoration: none;
+        color: #242428;
+      }
+
+      .sport-item svg {
+        margin-right: 5px;
+      }
+      .sport-item p {
+        font-size: 0.875rem;
+        color: #666;
+      }
+
+      .featured-sports {
+        display: flex;
+        width: 70%;
+      }
+
+      .featured-sport {
+        width: 50%;
+        padding: 0 10px;
+      }
+
+      .featured-sport img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      .featured-sport-title {
+        font-size: 16px;
+        font-weight: 500;
+        text-align: center;
+      }
+
+      .login-btn-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        padding: 12px;
+        margin-bottom: 10px;
+        border: 1px solid #e0e0de;
+        border-radius: 4px;
+        background-color: white;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .login-btn-wrapper:hover {
+        background-color: #e6e6e6;
+      }
     </style>
   </head>
   <body>
@@ -268,7 +371,109 @@
         </a>
         <nav>
           <ul>
-            <li><a href="#">Activities</a></li>
+            <li class="nav-dropdown">
+              <a href="#"
+                >Activities
+                <span class="dropdown-arrow">
+                  <svg
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                  >
+                    <path
+                      d="M14.384 5.5L8.796 11.09c-.44.44-1.152.44-1.591 0L1.616 5.5l.884-.884 5.5 5.5 5.5-5.5z"
+                      fill=""
+                    ></path>
+                  </svg> </span
+              ></a>
+              <div class="dropdown-content">
+                <div class="top-sports">
+                  <h3>Top Sports</h3>
+                  <a href="#" class="sport-item">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M13.5 5.5C12.7 5.5 12 4.8 12 4C12 3.2 12.7 2.5 13.5 2.5C14.3 2.5 15 3.2 15 4C15 4.8 14.3 5.5 13.5 5.5ZM9.8 8.9L7 23H9.1L10.9 15L13 17V23H15V15.5L12.9 13.5L13.5 10.5C14.8 12 16.8 13 19 13V11C17.1 11 15.5 10 14.7 8.6L13.7 7C13.3 6.4 12.7 6 12 6C11.7 6 11.4 6.1 11.1 6.2L6 8.3V13H8V9.6L9.8 8.9Z"
+                        fill="#242428"
+                      />
+                    </svg>
+                    <p>Running</p>
+                  </a>
+                  <a href="#" class="sport-item">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.5 5.5C16.3 5.5 17 4.8 17 4C17 3.2 16.3 2.5 15.5 2.5C14.7 2.5 14 3.2 14 4C14 4.8 14.7 5.5 15.5 5.5ZM5 12C2.2 12 0 14.2 0 17C0 19.8 2.2 22 5 22C7.8 22 10 19.8 10 17C10 14.2 7.8 12 5 12ZM5 20.5C3.1 20.5 1.5 18.9 1.5 17C1.5 15.1 3.1 13.5 5 13.5C6.9 13.5 8.5 15.1 8.5 17C8.5 18.9 6.9 20.5 5 20.5ZM19 12C16.2 12 14 14.2 14 17C14 19.8 16.2 22 19 22C21.8 22 24 19.8 24 17C24 14.2 21.8 12 19 12ZM19 20.5C17.1 20.5 15.5 18.9 15.5 17C15.5 15.1 17.1 13.5 19 13.5C20.9 13.5 22.5 15.1 22.5 17C22.5 18.9 20.9 20.5 19 20.5ZM10.8 9.2L13.5 8.5V5.5H9.5V7H11.3L9.3 7.5C8.5 7.7 7.9 8.4 7.9 9.2C7.9 10.2 8.7 11 9.7 11H13.5V9.5H9.8C9.8 9.5 9.8 9.5 9.8 9.5C9.8 9.3 10.3 9.2 10.8 9.2Z"
+                        fill="#242428"
+                      />
+                    </svg>
+                    <p>Cycling</p>
+                  </a>
+                  <a href="#" class="sport-item">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M13.5 5.5C14.3 5.5 15 4.8 15 4C15 3.2 14.3 2.5 13.5 2.5C12.7 2.5 12 3.2 12 4C12 4.8 12.7 5.5 13.5 5.5ZM18.5 13C17.7 13 17 13.7 17 14.5V19H16V10.9C16 10.1 15.4 9.5 14.6 9.5H12.5L12.2 11H14V21H18C19.1 21 20 20.1 20 19V14.5C20 13.7 19.3 13 18.5 13ZM10 21V15L8.2 13.6L8.8 12.6C9.2 11.8 9 10.8 8.2 10.2C7.4 9.6 6.3 9.7 5.7 10.5L2 15.6V21H4V16.4L5.3 14.5L6 19.4L9.9 21H10Z"
+                        fill="#242428"
+                      />
+                    </svg>
+                    <p>Walking</p>
+                  </a>
+                  <a href="#" class="sport-item">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M13.5 5.5C14.3 5.5 15 4.8 15 4C15 3.2 14.3 2.5 13.5 2.5C12.7 2.5 12 3.2 12 4C12 4.8 12.7 5.5 13.5 5.5ZM18.5 13C17.7 13 17 13.7 17 14.5V19H16V10.9C16 10.1 15.4 9.5 14.6 9.5H12.5L12.2 11H14V21H18C19.1 21 20 20.1 20 19V14.5C20 13.7 19.3 13 18.5 13ZM10 21V15L8.2 13.6L8.8 12.6C9.2 11.8 9 10.8 8.2 10.2C7.4 9.6 6.3 9.7 5.7 10.5L2 15.6V21H4V16.4L5.3 14.5L6 19.4L9.9 21H10Z"
+                        fill="#242428"
+                      />
+                    </svg>
+                    <p>Hiking</p>
+                  </a>
+                </div>
+                <div class="featured-sports">
+                  <div class="featured-sport">
+                    <img
+                      loading="lazy"
+                      alt="Happy woman covering her eyes from the sun, after a run."
+                      role="img"
+                      src="https://web-assets.strava.com/assets/landing-pages/_next/static/media/ALP-subnav-featured-item-running@1x.aa0820c0.jpg"
+                      width=""
+                      height=""
+                      data-testid="featured-image-0"
+                    />
+                    <div class="featured-sport-title">Running</div>
+                  </div>
+                  <div class="featured-sport">
+                    <img
+                      src="https://web-assets.strava.com/assets/landing-pages/_next/static/media/ALP-subnav-featured-item-cycling@1x.351f99d6.jpg"
+                      alt="Happy woman cycling outside"
+                    />
+                    <div class="featured-sport-title">Cycling</div>
+                  </div>
+                </div>
+              </div>
+            </li>
             <li><a href="#">Features</a></li>
             <li><a href="#">Maps</a></li>
             <li><a href="#">Challenges</a></li>
@@ -276,7 +481,9 @@
           </ul>
         </nav>
       </div>
-      <a href="#" class="login-btn">Log In</a>
+      <div class="login-btn-wrapper">
+        <a href="#" class="login-btn">Log In</a>
+      </div>
     </header>
 
     <!-- Hero Section -->
