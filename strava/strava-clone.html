@@ -153,14 +153,17 @@
       }
 
       .terms {
-        font-size: 12px;
-        color: #666;
-        margin-top: 15px;
+        font-size: 12px !important;
+        color: #000 !important;
+        margin-top: 12px !important;
       }
 
       .terms a {
-        color: #fc5200;
+        color: #0060d0;
         text-decoration: none;
+      }
+      .terms a:hover {
+        text-decoration: underline;
       }
 
       /* Footer */
@@ -490,7 +493,7 @@
     <section class="hero">
       <div class="hero-left"></div>
       <div class="hero-center">
-        <div class="space" style="height: 80px"></div>
+        <div class="space" style="height: 40px"></div>
         <h1>
           Community-Powered <br />
           Motivation
@@ -540,7 +543,11 @@
           <div></div>
         </button>
 
-        <button class="signup-btn email">Sign Up With Email</button>
+        <button class="signup-btn email">
+          <div></div>
+          <div>Sign Up With Email</div>
+          <div></div>
+        </button>
 
         <p class="terms">
           By continuing, you are agreeing to our
